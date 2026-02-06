@@ -1,2 +1,3 @@
 # Ignorovat site složku generovanou MkDocs
 site/
+.DS_Store
