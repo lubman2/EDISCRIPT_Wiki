@@ -1,0 +1,9067 @@
+
+<!doctype html>
+<html lang="cs" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Komplexní dokumentace EDISCRIPT systému">
+      
+      
+        <meta name="author" content="lubman2">
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../PCS_OPERACE_REFERENCNI_PRUVODCE/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Syntax guide - EDISCRIPT Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pcs-syntax-guide-edi-script-language" class="md-skip">
+          Přeskočit obsah
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Záhlaví">
+    <a href="../.." title="EDISCRIPT Wiki" class="md-header__button md-logo" aria-label="EDISCRIPT Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EDISCRIPT Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Syntax guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Hledat" placeholder="Hledat" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Vyhledávání">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Vyčistit" aria-label="Vyčistit" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializace vyhledávání
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lubman2/EDISCRIPT_Wiki" title="Přejít do repozitáře" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EDISCRIPT_Wiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Karty" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  PCS skriptování
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../COMDIS/COMDIS_KOMPLETNI_PRUVODCE/" class="md-tabs__link">
+          
+  
+  
+  COMDIS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../EDISCRIPT_Help/" class="md-tabs__link">
+          
+  
+  
+  EDISCRIPT Help
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigace" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="EDISCRIPT Wiki" class="md-nav__button md-logo" aria-label="EDISCRIPT Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    EDISCRIPT Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lubman2/EDISCRIPT_Wiki" title="Přejít do repozitáře" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EDISCRIPT_Wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCS skriptování
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PCS skriptování
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syntax guide
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syntax guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Obsah">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Obsah
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prehled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Přehled
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-zakladni-struktura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ZÁKLADNÍ STRUKTURA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ZÁKLADNÍ STRUKTURA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#akce-a-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Akce a Labels
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-promenne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. PROMĚNNÉ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. PROMĚNNÉ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typy-promennych" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typy proměnných
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prirazeni-hodnot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Přiřazení hodnot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specialni-promenne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speciální proměnné
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-prace-se-soubory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. PRÁCE SE SOUBORY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. PRÁCE SE SOUBORY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zakladni-operace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Základní operace
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-prace-s-edi-daty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. PRÁCE S EDI DATY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. PRÁCE S EDI DATY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cteni-edi-dokumentu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Čtení EDI dokumentů
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml-prace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XML práce
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ridici-prikazy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. ŘÍDÍCÍ PŘÍKAZY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. ŘÍDÍCÍ PŘÍKAZY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#podminky" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Podmínky
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smycky" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smyčky
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#konfiguracni-soubory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Konfigurační soubory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-textove-operace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. TEXTOVÉ OPERACE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. TEXTOVÉ OPERACE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manipulace-s-retezci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manipulace s řetězci
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-psani-a-vystup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. PSANÍ A VÝSTUP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. PSANÍ A VÝSTUP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zapis-do-souboru" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zápis do souborů
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spusteni-externich-prikazu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spuštění externích příkazů
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-procedury" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. PROCEDURY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. PROCEDURY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definice-a-volani-procedur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definice a volání procedur
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-funkce-pro-praci-s-casy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. FUNKCE PRO PRÁCI S ČASY
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-prakticke-priklady" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. PRAKTICKÉ PŘÍKLADY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. PRAKTICKÉ PŘÍKLADY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#priklad-1-kopirovani-s-kontrolou-chyby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Příklad 1: Kopírování s kontrolou chyby
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priklad-2-cteni-a-zpracovani-edi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Příklad 2: Čtení a zpracování EDI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priklad-3-generovani-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Příklad 3: Generování SQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priklad-4-manipulace-retezcu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Příklad 4: Manipulace řetězců
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-stavove-kody-a-chyby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. STAVOVÉ KÓDY A CHYBY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. STAVOVÉ KÓDY A CHYBY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stavova-slova" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stavová slova
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typicke-chyby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typické chyby
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-tisk-a-grafika-pro-emf-vystupy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. TISK A GRAFIKA (pro .emf výstupy)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. TISK A GRAFIKA (pro .emf výstupy)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nastaveni-tisku" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nastavení tisku
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kresleni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kreslení
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vystupni-formaty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Výstupní formáty
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-pokrocile-operace-s-edim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. POKROČILÉ OPERACE S EDIM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. POKROČILÉ OPERACE S EDIM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modifikace-edi-struktur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modifikace EDI struktur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterace-pres-zpravy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iterace přes zprávy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-specialni-datove-typy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. SPECIÁLNÍ DATOVÉ TYPY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. SPECIÁLNÍ DATOVÉ TYPY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bitove-operace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bitové operace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#casove-operace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Časové operace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numerovane-iterace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Numerované iterace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kvalifikatory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kvalifikátory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hierarchie-edi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hierarchie EDI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-uzitecne-poznamky" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. UŽITEČNÉ POZNÁMKY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. UŽITEČNÉ POZNÁMKY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#komentare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Komentáře
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chovani" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chování
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bezne-chyby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Běžné chyby
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-ceniky-prikazu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. CENÍKY PŘÍKAZŮ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. CENÍKY PŘÍKAZŮ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primarni-prikazy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primární příkazy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zdroje-v-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zdroje v Workspace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#poznamka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Poznámka
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PCS_OPERACE_REFERENCNI_PRUVODCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operace - referenční průvodce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    COMDIS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    COMDIS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../COMDIS/COMDIS_KOMPLETNI_PRUVODCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kompletní průvodce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../COMDIS/COMDIS_VIZUALNI_PREHLED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vizuální přehled
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../COMDIS/COMDIS_E2X_MODELCH_DOKUMENTACE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelování dokumentů
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../COMDIS/COMDIS_XML_SCHEMAT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XML schéma
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDISCRIPT Help
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EDISCRIPT Help
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Přehled
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Přehled
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Přehled
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/Basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/Keywords/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keywords
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/Logical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logical
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/Navigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navigation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/Printing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Printing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/Running/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/Sign/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sign
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/Variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/Window/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Window
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Řízení toku
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Řízení toku
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/ACTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ACTION
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/CALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CALL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/CASE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CASE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/CONST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CONST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/END/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    END
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/ERROR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ERROR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/GOTO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GOTO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/IF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/IFEMPTY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IFEMPTY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/IFFULL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IFFULL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/LASTERROR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LASTERROR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/LET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/NEWACTION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NEWACTION
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/PROC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PROC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/RETURN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RETURN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/SWITCH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SWITCH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Systém
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Systém
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/GUID/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GUID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/PROGPATH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PROGPATH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/READLINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    READLINE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/READSEG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    READSEG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/READTEXT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    READTEXT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/REMOVESPACES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    REMOVESPACES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/RUN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RUN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/RUNEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RUNEX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/RUNS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RUNS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/RUNX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RUNX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/SCRIPTNAME/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SCRIPTNAME
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TIME/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TIME
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TIMETOSTR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TIMETOSTR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TRIM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TRIM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/WAIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WAIT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/WRITE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WRITE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/WRITEN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WRITEN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    File
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/File/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/FILECLOSE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FILECLOSE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/FILECOPY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FILECOPY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/FILEDELETE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FILEDELETE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/FILEEXIST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FILEEXIST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/FILEEXT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FILEEXT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/FILELENGTH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FILELENGTH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/FILENAME/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FILENAME
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/FILEOPEN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FILEOPEN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/FILETIME/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FILETIME
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/FILEUNIQUE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FILEUNIQUE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    String
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    String
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/STRCOPY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STRCOPY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/STRFIND/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STRFIND
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/STRFINDX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STRFINDX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/String/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    String
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/STRLEN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STRLEN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/STRTOTIME/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STRTOTIME
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/STRUPPER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STRUPPER
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Table
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Table
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/Table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Table
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TABLEAPPEND/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TABLEAPPEND
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TABLECLOSE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TABLECLOSE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TABLECREATE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TABLECREATE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TABLEDELETE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TABLEDELETE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TABLEFIND/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TABLEFIND
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TABLENEXT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TABLENEXT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TABLEOPEN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TABLEOPEN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TABLEOPENR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TABLEOPENR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TABLEOPENX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TABLEOPENX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TABLEOPENXR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TABLEOPENXR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TABLEREAD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TABLEREAD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TABLERECORD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TABLERECORD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TABLEUPDATE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TABLEUPDATE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TABLEWRITE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TABLEWRITE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Excel
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Excel
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/Excel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Excel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EXCELCLOSE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EXCELCLOSE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EXCELGET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EXCELGET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EXCELOPEN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EXCELOPEN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EXCELSAVE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EXCELSAVE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EXCELSET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EXCELSET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EXCELSHEET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EXCELSHEET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SQL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/SQLCLOSE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLCLOSE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/SQLCONNECT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLCONNECT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/SQLERROR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLERROR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/SQLEXEC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLEXEC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/SQLFETCH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLFETCH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/SQLGET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLGET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/SQLSELECT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLSELECT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/SQLSET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLSET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Printing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Printing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/ORIENTATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ORIENTATION
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/PAGE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAGE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/PRINT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRINT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/PRINTCLOSE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRINTCLOSE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/PRINTOPEN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRINTOPEN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/PRINTPREVIEW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRINTPREVIEW
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/SETPRINTER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SETPRINTER
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grafika
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Grafika
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/BARCODE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BARCODE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/BITMAP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BITMAP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/BRUSH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BRUSH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/ELLIPSE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ELLIPSE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/FONT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FONT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/LABEL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LABEL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/LINE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LINE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/PEN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PEN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/RECTANGLE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RECTANGLE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/ROUNDRECT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ROUNDRECT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TEXT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TEXT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TEXTALIGN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TEXTALIGN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TEXTCOLOR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TEXTCOLOR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_12" id="__nav_4_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dialogy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dialogy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/BOX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BOX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/BOXYESNO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BOXYESNO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/OPENBOX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OPENBOX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/SAVEBOX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAVEBOX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_13" id="__nav_4_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mail
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mail
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/MAIL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MAIL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/MAILRECEIVE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MAILRECEIVE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_14" id="__nav_4_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EDI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIAUTACK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIAUTACK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIAUTACKEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIAUTACKEX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDICHECK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDICHECK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDICIPHER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDICIPHER
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDICIPHEREX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDICIPHEREX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDICOUNT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDICOUNT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDICREATE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDICREATE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIDECIPHER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIDECIPHER
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIDECIPHEREX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIDECIPHEREX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIERROR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIERROR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIEXPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIEXPORT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIFACT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIFACT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIFATHER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIFATHER
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIGET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIGET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIGETSEG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIGETSEG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIGETSEGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIGETSEGS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIIMPEDI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIIMPEDI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIIMPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIIMPORT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIMESSAGE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIMESSAGE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIMSGLEN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIMSGLEN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIREAD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIREAD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIREADMSG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIREADMSG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIRESET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIRESET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIScript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDISET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDISET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDISIGN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDISIGN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDISIGNEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDISIGNEX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIUNA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIUNA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIUNB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIUNB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIUNBMSG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIUNBMSG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIVERIF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIVERIF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIVERIFEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIVERIFEX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EDIWRITE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDIWRITE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_15" id="__nav_4_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    X12
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    X12
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/X12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    X12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/X12CHECK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    X12CHECK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/X12COUNT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    X12COUNT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/X12ERROR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    X12ERROR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/X12EXPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    X12EXPORT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/X12FATHER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    X12FATHER
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/X12GET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    X12GET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/X12IMPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    X12IMPORT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/X12MESSAGE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    X12MESSAGE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/X12READ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    X12READ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/X12RESET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    X12RESET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/X12SET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    X12SET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/X12WRITE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    X12WRITE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_16" id="__nav_4_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XML
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    XML
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/XML/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/XMLATTRGET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XMLATTRGET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/XMLATTRSET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XMLATTRSET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/XMLCLOSE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XMLCLOSE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/XMLERROR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XMLERROR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/XMLOPEN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XMLOPEN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/XMLROOTTAG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XMLROOTTAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/XMLSAVE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XMLSAVE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/XMLTAG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XMLTAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/XMLTAGSET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XMLTAGSET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/XMLTEXTGET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XMLTEXTGET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/XMLTEXTSET/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XMLTEXTSET
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_17" id="__nav_4_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ostatní
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ostatní
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/%3B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ;
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/BEEP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BEEP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/CERTLASTDATE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CERTLASTDATE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/CERTLASTDATEEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CERTLASTDATEEX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/CONVFILE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CONVFILE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/CONVTEXT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CONVTEXT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/COUNTER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    COUNTER
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/EAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/FINDFILE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FINDFILE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/FINDPATH/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FINDPATH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/GETFIELD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GETFIELD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/GETITEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GETITEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/GETTEXT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GETTEXT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/INBOX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    INBOX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/INIREAD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    INIREAD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/INIWRITE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    INIWRITE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/NUMBER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NUMBER
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/RENAME/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RENAME
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/TEXTR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TEXTR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EDISCRIPT_Help/~TO%24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ~TO$
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Obsah">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Obsah
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prehled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Přehled
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-zakladni-struktura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ZÁKLADNÍ STRUKTURA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ZÁKLADNÍ STRUKTURA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#akce-a-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Akce a Labels
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-promenne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. PROMĚNNÉ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. PROMĚNNÉ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typy-promennych" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typy proměnných
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prirazeni-hodnot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Přiřazení hodnot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specialni-promenne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speciální proměnné
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-prace-se-soubory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. PRÁCE SE SOUBORY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. PRÁCE SE SOUBORY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zakladni-operace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Základní operace
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-prace-s-edi-daty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. PRÁCE S EDI DATY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. PRÁCE S EDI DATY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cteni-edi-dokumentu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Čtení EDI dokumentů
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml-prace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XML práce
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ridici-prikazy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. ŘÍDÍCÍ PŘÍKAZY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. ŘÍDÍCÍ PŘÍKAZY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#podminky" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Podmínky
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smycky" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smyčky
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#konfiguracni-soubory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Konfigurační soubory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-textove-operace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. TEXTOVÉ OPERACE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. TEXTOVÉ OPERACE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manipulace-s-retezci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manipulace s řetězci
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-psani-a-vystup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. PSANÍ A VÝSTUP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. PSANÍ A VÝSTUP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zapis-do-souboru" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zápis do souborů
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spusteni-externich-prikazu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spuštění externích příkazů
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-procedury" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. PROCEDURY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. PROCEDURY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definice-a-volani-procedur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definice a volání procedur
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-funkce-pro-praci-s-casy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. FUNKCE PRO PRÁCI S ČASY
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-prakticke-priklady" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. PRAKTICKÉ PŘÍKLADY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. PRAKTICKÉ PŘÍKLADY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#priklad-1-kopirovani-s-kontrolou-chyby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Příklad 1: Kopírování s kontrolou chyby
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priklad-2-cteni-a-zpracovani-edi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Příklad 2: Čtení a zpracování EDI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priklad-3-generovani-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Příklad 3: Generování SQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priklad-4-manipulace-retezcu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Příklad 4: Manipulace řetězců
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-stavove-kody-a-chyby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. STAVOVÉ KÓDY A CHYBY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. STAVOVÉ KÓDY A CHYBY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stavova-slova" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stavová slova
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typicke-chyby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typické chyby
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-tisk-a-grafika-pro-emf-vystupy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. TISK A GRAFIKA (pro .emf výstupy)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. TISK A GRAFIKA (pro .emf výstupy)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nastaveni-tisku" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nastavení tisku
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kresleni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kreslení
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vystupni-formaty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Výstupní formáty
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-pokrocile-operace-s-edim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. POKROČILÉ OPERACE S EDIM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. POKROČILÉ OPERACE S EDIM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modifikace-edi-struktur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modifikace EDI struktur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterace-pres-zpravy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Iterace přes zprávy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-specialni-datove-typy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. SPECIÁLNÍ DATOVÉ TYPY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. SPECIÁLNÍ DATOVÉ TYPY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bitove-operace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bitové operace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#casove-operace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Časové operace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numerovane-iterace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Numerované iterace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kvalifikatory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kvalifikátory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hierarchie-edi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hierarchie EDI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-uzitecne-poznamky" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. UŽITEČNÉ POZNÁMKY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. UŽITEČNÉ POZNÁMKY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#komentare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Komentáře
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chovani" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chování
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bezne-chyby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Běžné chyby
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-ceniky-prikazu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. CENÍKY PŘÍKAZŮ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. CENÍKY PŘÍKAZŮ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primarni-prikazy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primární příkazy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zdroje-v-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zdroje v Workspace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#poznamka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Poznámka
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="pcs-syntax-guide-edi-script-language">PCS Syntax Guide - EDI Script Language<a class="headerlink" href="#pcs-syntax-guide-edi-script-language" title="Permanent link">&para;</a></h1>
+<h2 id="prehled">Přehled<a class="headerlink" href="#prehled" title="Permanent link">&para;</a></h2>
+<p>PCS (Processing Script) je proprietární skriptovací jazyk používaný v EDI systémech pro zpracování EDIFACT, XML a dalších datových formátů. Soubory mají příponu <code>.pcs</code> a <code>.pcf</code> (compiled).</p>
+<hr />
+<h2 id="1-zakladni-struktura">1. ZÁKLADNÍ STRUKTURA<a class="headerlink" href="#1-zakladni-struktura" title="Permanent link">&para;</a></h2>
+<h3 id="akce-a-labels">Akce a Labels<a class="headerlink" href="#akce-a-labels" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>ACTION 1                    ; Hlavní akce (vstupní bod skriptu)
+LABEL LabelName            ; Definice návěští
+GOTO LabelName             ; Skok na návěští
+</code></pre></div>
+<p><strong>Příklad:</strong>
+<div class="highlight"><pre><span></span><code>ACTION 1
+EDIREAD @0 $2 0
+IF F THEN ErrorLabel
+END
+
+LABEL ErrorLabel
+LET $0=&quot;Chyba čtení&quot;
+RUNS &quot;log.pcf&quot; 1 5
+END
+</code></pre></div></p>
+<hr />
+<h2 id="2-promenne">2. PROMĚNNÉ<a class="headerlink" href="#2-promenne" title="Permanent link">&para;</a></h2>
+<h3 id="typy-promennych">Typy proměnných<a class="headerlink" href="#typy-promennych" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>$n</code> - Řetězce (textové proměnné): <code>$0</code>, <code>$1</code>, <code>$2</code>, atd.</li>
+<li><code>#n</code> - Numerické proměnné: <code>#1</code>, <code>#2</code>, <code>#3</code>, atd.</li>
+<li><code>@n</code> - Objekty/Handle (např. otevřené soubory): <code>@0</code>, <code>@1</code>, atd.</li>
+</ul>
+<h3 id="prirazeni-hodnot">Přiřazení hodnot<a class="headerlink" href="#prirazeni-hodnot" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>LET $1=&quot;Hello World&quot;        ; Přiřazení řetězce
+LET #5=100                  ; Přiřazení čísla
+LET $2=$1+&quot;_suffix&quot;         ; Concatenace
+LET #2=#2+1                 ; Inkrementace
+</code></pre></div>
+<h3 id="specialni-promenne">Speciální proměnné<a class="headerlink" href="#specialni-promenne" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>$0</code> - Zpravidla hlavní soubor/zpráva</li>
+<li><code>$8</code> - Cesta k programu (PROGPATH $8)</li>
+<li><code>#1</code> - Číslo triády (procesní index)</li>
+</ul>
+<hr />
+<h2 id="3-prace-se-soubory">3. PRÁCE SE SOUBORY<a class="headerlink" href="#3-prace-se-soubory" title="Permanent link">&para;</a></h2>
+<h3 id="zakladni-operace">Základní operace<a class="headerlink" href="#zakladni-operace" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>PROGPATH $8                 ; Načte cestu ke spuštěnému programu
+FILENAME $0 $9              ; Extrahuje jen jméno souboru z cesty
+FILECOPY $0 $9 [flag]       ; Kopíruje soubor
+                            ; flag: 1=overwrite, 3=error handling
+FILEDELETE $1               ; Smaže soubor
+FILEEXIST $1                ; Testuje existenci (IF F THEN)
+FILEOPEN $1                 ; Otevře soubor pro čtení
+FILECLOSE                   ; Zavře otevřený soubor
+READLINE $2                 ; Čte řádek z otevřeného souboru
+</code></pre></div>
+<p><strong>Příklady:</strong>
+<div class="highlight"><pre><span></span><code>; Kopírování souboru
+FILECOPY $0 $9 1            ; Přepíše pokud existuje
+
+; Kontrola existence
+FILEEXIST $3
+IF F THEN DoesntExist       ; Skočí pokud NEEXISTUJE
+</code></pre></div></p>
+<hr />
+<h2 id="4-prace-s-edi-daty">4. PRÁCE S EDI DATY<a class="headerlink" href="#4-prace-s-edi-daty" title="Permanent link">&para;</a></h2>
+<h3 id="cteni-edi-dokumentu">Čtení EDI dokumentů<a class="headerlink" href="#cteni-edi-dokumentu" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>EDIREAD @0 $2 0             ; Načte EDI soubor z $2 do objektu @0
+EDIGET @0 $1 &quot;SEGMENT,field,part&quot;  ; Extrahuje data z EDI
+EDISET @0 $value &quot;SEGMENT,field,part&quot;  ; Nastaví hodnotu v EDI
+EDIWRITE @0 $filename format  ; Zapíše EDI do souboru
+EDIMESSAGE @0 #index        ; Selektuje zprávu z interchange
+EDIFATHER @0 &quot;SEGMENT,path&quot;  ; Nastaví rodičovský segment
+</code></pre></div>
+<p><strong>Formát EDIGET/EDISET:</strong>
+<div class="highlight"><pre><span></span><code>EDIGET @0 $var &quot;SEGMENT,index,subindex,...,qualifier&quot;
+EDISET @0 $value &quot;SEGMENT,index,subindex,...,qualifier&quot;
+
+Příklady:
+EDIGET @0 $1 &quot;BGM,2,1&quot;      ; Segment BGM, 2. pole, 1. složka
+EDIGET @0 $1 &quot;NAD,2,1,,,,1,1,DP&quot;  ; NAD s kvalifikátorem DP
+EDIGET @0 $1 &quot;LIN,1,1,,,#2&quot;  ; LIN s číslovanou iterací (#2)
+EDIGET @0 $4 &quot;RFF,1,2,,1,,1,1,VA&quot;  ; RFF s kvalifikátorem VA
+
+; Nastavení hodnot:
+EDISET @0 $2 &quot;UNB,3,1,,,,3,2,14&quot;  ; Nastaví pole v UNB
+EDISET @0 &quot;Test_Value&quot; &quot;FTX,4,1,,1&quot;  ; Nastaví text
+</code></pre></div></p>
+<h3 id="xml-prace">XML práce<a class="headerlink" href="#xml-prace" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>XMLREAD $2 @0               ; Čte XML soubor
+XMLTAG @0 &quot;TagName,level&quot;   ; Přistupuje ke XML tagům
+XMLTAG @0 &quot;Tag,level,#index&quot; ; S iterací přes více tagů
+XMLSAVE @0 &quot;filename&quot;       ; Uloží XML
+</code></pre></div>
+<p><strong>Příklady XMLTAG:</strong>
+<div class="highlight"><pre><span></span><code>XMLTAG @0 &quot;VendorForecast,0&quot;  ; Kořenový tag
+XMLTAG @0 &quot;Header,1&quot;          ; Tag na úrovni 1
+XMLTAG @0 &quot;ItemData,2,#4&quot;     ; Iterace přes více ItemData
+XMLTAG @0 &quot;ScheduleLines,3,#5&quot;  ; Vnořené iterace
+</code></pre></div></p>
+<hr />
+<h2 id="5-ridici-prikazy">5. ŘÍDÍCÍ PŘÍKAZY<a class="headerlink" href="#5-ridici-prikazy" title="Permanent link">&para;</a></h2>
+<h3 id="podminky">Podmínky<a class="headerlink" href="#podminky" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>IF condition THEN label     ; Podmíněný skok
+IFFULL $1 THEN label        ; Skočí pokud je proměnná PLNÁ
+IFEMPTY $1 THEN label       ; Skočí pokud je proměnná PRÁZDNÁ
+IF F THEN label             ; Skočí pokud poslední příkaz SELHAL
+IF !F THEN label            ; Skočí pokud poslední příkaz USPĚL
+</code></pre></div>
+<p><strong>Příklady podmínek:</strong>
+<div class="highlight"><pre><span></span><code>IF F THEN ErrorHandler              ; Selhání čtení
+IFFULL $1 THEN ProcessData          ; Data jsou přítomna
+IFEMPTY $1 THEN SkipSection         ; Prázdné pole = přeskočit
+IF $1=&quot;TEST&quot; THEN HandleTest        ; Porovnání řetězců
+IF #1&gt;5 THEN LoopEnd                ; Numerické porovnání
+IF $3!=&quot;SK&quot; THEN NoSlovakia         ; Negace
+IF ~0!=0 THEN End                   ; Porovnání bitů/čísel
+</code></pre></div></p>
+<h3 id="smycky">Smyčky<a class="headerlink" href="#smycky" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>LABEL LoopStart
+...
+LET #2=#2+1
+IF #2&lt;=10 THEN LoopStart    ; Pokud #2 &lt;= 10, vrátí se na LoopStart
+GOTO LoopStart              ; Bezpodmínečný skok
+</code></pre></div>
+<h3 id="konfiguracni-soubory">Konfigurační soubory<a class="headerlink" href="#konfiguracni-soubory" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>INIREAD $inifile &quot;section&quot; &quot;key&quot; $var
+                            ; Čte hodnotu z INI souboru
+INIWRITE $inifile &quot;section&quot; &quot;key&quot; $value
+                            ; Zapíše hodnotu do INI souboru
+</code></pre></div>
+<p><strong>Příklady:</strong>
+<div class="highlight"><pre><span></span><code>LET $9=$8+&quot;edi.ini&quot;
+INIREAD $9 &quot;EDI&quot; &quot;Password&quot; $0  ; Čte heslo z konfigurace
+</code></pre></div></p>
+<hr />
+<h2 id="6-textove-operace">6. TEXTOVÉ OPERACE<a class="headerlink" href="#6-textove-operace" title="Permanent link">&para;</a></h2>
+<h3 id="manipulace-s-retezci">Manipulace s řetězci<a class="headerlink" href="#manipulace-s-retezci" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>GETTEXT $source $dest start_pos length
+                            ; Extrahuje podřetězec
+STRCOPY $dest $source pos1 pos2 offset
+                            ; Kopíruje část řetězce
+STRFIND $string #position &quot;text&quot;
+                            ; Hledá pozici textu
+STRTOTIME $string #time format
+                            ; Konvertuje řetězec na čas
+TIMETOSTR #time $string format
+                            ; Konvertuje čas na řetězec
+</code></pre></div>
+<p><strong>Příklady:</strong>
+<div class="highlight"><pre><span></span><code>GETTEXT $1 $4 1 8           ; Vezme 8 znaků od pozice 1
+STRTOTIME $4 #5 2           ; Konvertuje na čas (formát 2)
+TIMETOSTR #5 $1 2-          ; Konvertuje čas zpět
+STRFIND $1 &quot;&#39;&quot; #5           ; Hledá apostrof
+</code></pre></div></p>
+<hr />
+<h2 id="7-psani-a-vystup">7. PSANÍ A VÝSTUP<a class="headerlink" href="#7-psani-a-vystup" title="Permanent link">&para;</a></h2>
+<h3 id="zapis-do-souboru">Zápis do souborů<a class="headerlink" href="#zapis-do-souboru" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>WRITE $filename $text       ; Přepíše soubor
+WRITEN $filename $text      ; Přidá řádek do souboru
+</code></pre></div>
+<p><strong>Příklady:</strong>
+<div class="highlight"><pre><span></span><code>LET $2=&quot;BEGIN TRANSACTION&quot;
+WRITEN $3 $2                ; Přidá řádek do SQL skriptu
+
+LET $1=&quot;Test&quot;
+WRITE $1 $2                 ; Vytvoří nový soubor
+</code></pre></div></p>
+<h3 id="spusteni-externich-prikazu">Spuštění externích příkazů<a class="headerlink" href="#spusteni-externich-prikazu" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>RUNX $command               ; Spustí příkaz (shell)
+RUNS $scriptfile params     ; Spustí jiný PCS skript
+RUN $command                ; Spustí příkaz
+</code></pre></div>
+<p><strong>Příklady:</strong>
+<div class="highlight"><pre><span></span><code>LET $1=&quot;CrlfDel.exe &quot;+$0
+RUNX $1                     ; Spustí externí program
+
+RUNS &quot;log.pcf&quot; 1 5          ; Spustí log.pcf s parametry
+</code></pre></div></p>
+<hr />
+<h2 id="8-procedury">8. PROCEDURY<a class="headerlink" href="#8-procedury" title="Permanent link">&para;</a></h2>
+<h3 id="definice-a-volani-procedur">Definice a volání procedur<a class="headerlink" href="#definice-a-volani-procedur" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>PROC ProcedureName          ; Definice procedury
+...
+RETURN                      ; Návrat z procedury
+
+CALL ProcedureName          ; Volání procedury
+</code></pre></div>
+<p><strong>Příklad:</strong>
+<div class="highlight"><pre><span></span><code>PROC DateConv               ; Konvertuje datum
+GETTEXT $1 $4 1 8
+STRTOTIME $4 #5 2
+TIMETOSTR #5 $1 2-
+RETURN
+
+; Využití:
+EDIGET @0 $1 &quot;DTM,1,2,,,,1,1,137&quot;
+CALL DateConv               ; Zavolá proceduru
+</code></pre></div></p>
+<hr />
+<h2 id="9-funkce-pro-praci-s-casy">9. FUNKCE PRO PRÁCI S ČASY<a class="headerlink" href="#9-funkce-pro-praci-s-casy" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>GETTEXT $string $dest start length
+                            ; Extrahuje znaky
+STRTOTIME $string #number format
+                            ; Řetězec na čas
+TIMETOSTR #number $string format
+                            ; Čas na řetězec
+</code></pre></div>
+<p><strong>Formáty času:</strong>
+- <code>2</code> - YYYYMMDD (8 znaků)
+- <code>24</code> - Jiný formát
+- <code>2-</code> - YYYY-MM-DD
+- <code>24:</code> - Formát s časem</p>
+<hr />
+<h2 id="10-prakticke-priklady">10. PRAKTICKÉ PŘÍKLADY<a class="headerlink" href="#10-prakticke-priklady" title="Permanent link">&para;</a></h2>
+<h3 id="priklad-1-kopirovani-s-kontrolou-chyby">Příklad 1: Kopírování s kontrolou chyby<a class="headerlink" href="#priklad-1-kopirovani-s-kontrolou-chyby" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>ACTION 1
+PROGPATH $8
+FILENAME $0 $9
+LET $9=$8+&quot;BACKUP\&quot;+$9
+FILECOPY $0 $9 1
+IF F THEN ErrorHandler
+
+END
+
+LABEL ErrorHandler
+LET $0=&quot;Chyba kopírování&quot;
+RUNS &quot;log.pcf&quot; 1 5
+END
+</code></pre></div>
+<h3 id="priklad-2-cteni-a-zpracovani-edi">Příklad 2: Čtení a zpracování EDI<a class="headerlink" href="#priklad-2-cteni-a-zpracovani-edi" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>ACTION 1
+EDIREAD @0 &quot;input.edi&quot; 0
+IF F THEN ReadError
+
+LET #2=-1
+LABEL ProcessLoop
+LET #2=#2+1
+EDIGET @0 $1 &quot;LIN,1,1,,,#2&quot;
+IFEMPTY $1 THEN Finish
+
+; Zpracuj řádek
+LET $3=&quot;Zpracovávám: &quot;+$1
+
+GOTO ProcessLoop
+
+LABEL Finish
+END
+
+LABEL ReadError
+LET $0=&quot;Chyba čtení EDI&quot;
+RUNS &quot;log.pcf&quot; 1 5
+END
+</code></pre></div>
+<h3 id="priklad-3-generovani-sql">Příklad 3: Generování SQL<a class="headerlink" href="#priklad-3-generovani-sql" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>ACTION 1
+PROGPATH $8
+LET $3=$8+&quot;output.sql&quot;
+FILEDELETE $3
+
+LET $2=&quot;BEGIN TRANSACTION&quot;
+WRITEN $3 $2
+
+LET $2=&quot;INSERT INTO table VALUES (...)&quot;
+WRITEN $3 $2
+
+LET $2=&quot;COMMIT TRANSACTION&quot;
+WRITEN $3 $2
+
+END
+</code></pre></div>
+<h3 id="priklad-4-manipulace-retezcu">Příklad 4: Manipulace řetězců<a class="headerlink" href="#priklad-4-manipulace-retezcu" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>ACTION 1
+LET $1=&quot;2020-03-24&quot;
+
+; Odebere pomlčky
+GETTEXT $1 $4 1 4           ; Rok
+GETTEXT $1 $5 6 2           ; Měsíc
+GETTEXT $1 $6 9 2           ; Den
+LET $7=$4+$5+$6             ; &quot;20200324&quot;
+
+END
+</code></pre></div>
+<hr />
+<h2 id="11-stavove-kody-a-chyby">11. STAVOVÉ KÓDY A CHYBY<a class="headerlink" href="#11-stavove-kody-a-chyby" title="Permanent link">&para;</a></h2>
+<h3 id="stavova-slova">Stavová slova<a class="headerlink" href="#stavova-slova" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>F</code> - False/Failure (poslední příkaz selhal)</li>
+<li><code>T</code> - True (poslední příkaz uspěl)</li>
+<li><code>END</code> - Konec akce</li>
+<li><code>RETURN</code> - Návrat z procedury</li>
+</ul>
+<h3 id="typicke-chyby">Typické chyby<a class="headerlink" href="#typicke-chyby" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>IF F THEN ErrorLabel        ; Řeší selhání
+FILEEXIST $1
+IF F THEN Doesnt_Exist      ; Soubor neexistuje
+
+EDIREAD @0 $2 0
+IF F THEN Read_Error        ; Chyba čtení EDI
+</code></pre></div>
+<hr />
+<h2 id="15-tisk-a-grafika-pro-emf-vystupy">15. TISK A GRAFIKA (pro .emf výstupy)<a class="headerlink" href="#15-tisk-a-grafika-pro-emf-vystupy" title="Permanent link">&para;</a></h2>
+<h3 id="nastaveni-tisku">Nastavení tisku<a class="headerlink" href="#nastaveni-tisku" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>TEXTALIGN alignment         ; Zarovnání textu: LEFT, RIGHT, CENTER
+FONT &quot;FontName&quot;,size,bold,italic
+                            ; Nastavení fontu
+</code></pre></div>
+<h3 id="kresleni">Kreslení<a class="headerlink" href="#kresleni" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>LINE x1 y1 x2 y2           ; Nakreslí čáru
+TEXT x y &quot;text&quot;            ; Umístí text
+RECT x1 y1 x2 y2           ; Nakreslí obdélník
+CIRCLE x y radius          ; Nakreslí kruh
+</code></pre></div>
+<p><strong>Příklady:</strong>
+<div class="highlight"><pre><span></span><code>TEXTALIGN LEFT
+FONT &quot;Arial CE&quot;,100,,7      ; Arial, velikost 100, bez tučně, bez kurzívy
+TEXT 700 20 &quot;Vrácenka&quot;
+LINE 30 400 1930 400        ; Vodorovná čára
+</code></pre></div></p>
+<h3 id="vystupni-formaty">Výstupní formáty<a class="headerlink" href="#vystupni-formaty" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>.emf</code> - Enhanced Metafile (grafický formát pro tisk)</li>
+<li><code>.pcs</code> - Script soubor</li>
+<li><code>.pcf</code> - Compiled script</li>
+<li><code>.def</code> - Definition soubor</li>
+</ul>
+<hr />
+<h2 id="16-pokrocile-operace-s-edim">16. POKROČILÉ OPERACE S EDIM<a class="headerlink" href="#16-pokrocile-operace-s-edim" title="Permanent link">&para;</a></h2>
+<h3 id="modifikace-edi-struktur">Modifikace EDI struktur<a class="headerlink" href="#modifikace-edi-struktur" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>EDISET @0 $value &quot;path&quot;    ; Nastaví hodnotu na cestu
+EDIFATHER @0 &quot;path&quot;        ; Nastaví rodičovský segment (umístění)
+EDIWRITE @0 $file format   ; Zapíše EDI do souboru
+</code></pre></div>
+<p><strong>Příklady s EDIFATHER:</strong>
+<div class="highlight"><pre><span></span><code>; Umístění segmentu pod specifický rodič
+EDIFATHER @0 &quot;NAD,1,1,,,,1,1,SU&quot;  ; Umístí data pod NAD SU
+EDISET @0 &quot;Praha 10&quot; &quot;NAD,6,1,,,,1,1,SU&quot;
+</code></pre></div></p>
+<h3 id="iterace-pres-zpravy">Iterace přes zprávy<a class="headerlink" href="#iterace-pres-zpravy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>EDIMESSAGE @0 #2            ; Selektuje zprávu číslo #2
+IF F THEN ExitLoop          ; Žádná další zpráva
+</code></pre></div>
+<hr />
+<h2 id="17-specialni-datove-typy">17. SPECIÁLNÍ DATOVÉ TYPY<a class="headerlink" href="#17-specialni-datove-typy" title="Permanent link">&para;</a></h2>
+<h3 id="bitove-operace">Bitové operace<a class="headerlink" href="#bitove-operace" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>LET ~0=$1                   ; Konvertuje na bitový formát
+IF ~0!=0 THEN ...           ; Testuje bitové hodnoty
+</code></pre></div>
+<h3 id="casove-operace">Časové operace<a class="headerlink" href="#casove-operace" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>GETTEXT $string $dest start length
+STRTOTIME $string #time format  ; Řetězec → čas
+TIMETOSTR #time $string format  ; Čas → řetězec
+</code></pre></div>
+<hr />
+<h3 id="numerovane-iterace">Numerované iterace<a class="headerlink" href="#numerovane-iterace" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>EDIGET @0 $1 &quot;LIN,1,1,,,#2&quot;
+; #2 je počítadlo pro iteraci přes více LIN segmentů
+</code></pre></div>
+<h3 id="kvalifikatory">Kvalifikátory<a class="headerlink" href="#kvalifikatory" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>EDIGET @0 $1 &quot;NAD,2,1,,,,1,1,DP&quot;
+; DP = Delivery Party (kvalifikátor)
+; Další: SU, SE, BY, UC, IV, VA, ON, atd.
+</code></pre></div>
+<h3 id="hierarchie-edi">Hierarchie EDI<a class="headerlink" href="#hierarchie-edi" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>&quot;SEGMENT,field,subfield,element,subelement,occurrence,sequence,qualifier&quot;
+
+Příklad: &quot;NAD,2,1,,,,1,1,DP&quot;
+- NAD = segment
+- 2 = pole
+- 1 = složka
+- (prázdné) = element
+- (prázdné) = subelement  
+- 1 = výskyt
+- 1 = sekvence
+- DP = kvalifikátor
+</code></pre></div>
+<hr />
+<h2 id="13-uzitecne-poznamky">13. UŽITEČNÉ POZNÁMKY<a class="headerlink" href="#13-uzitecne-poznamky" title="Permanent link">&para;</a></h2>
+<h3 id="komentare">Komentáře<a class="headerlink" href="#komentare" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>; Začíná středníkem
+; Lze na libovolném místě v řádku
+</code></pre></div>
+<h3 id="chovani">Chování<a class="headerlink" href="#chovani" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Příkazy nejsou case-sensitive</li>
+<li>Řetězce se uzavírají do uvozovek <code>""</code></li>
+<li>Čísla nejsou označena speciálně</li>
+<li>Objekty (@) se používají pro soubory a ED dokumenty</li>
+</ul>
+<h3 id="bezne-chyby">Běžné chyby<a class="headerlink" href="#bezne-chyby" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>; ✓ Správně
+LET $1=&quot;test&quot;
+EDIGET @0 $2 &quot;BGM,2,1&quot;
+
+; ✗ Chyba - chybí uvozovky
+LET $1=test
+
+; ✗ Chyba - špatná proměnná
+LET @1=&quot;text&quot;  ; @ je pro objekty, ne pro řetězce
+</code></pre></div>
+<hr />
+<h2 id="14-ceniky-prikazu">14. CENÍKY PŘÍKAZŮ<a class="headerlink" href="#14-ceniky-prikazu" title="Permanent link">&para;</a></h2>
+<h3 id="primarni-prikazy">Primární příkazy<a class="headerlink" href="#primarni-prikazy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>ACTION, LABEL, GOTO
+LET, IF, IFEMPTY, IFFULL
+PROGPATH, FILENAME, FILECOPY, FILEDELETE, FILEEXIST
+FILEOPEN, FILECLOSE, READLINE
+EDIREAD, EDIGET, EDISET, EDIWRITE, EDIMESSAGE, EDIFATHER
+XMLREAD, XMLTAG, XMLSAVE
+INIREAD, INIWRITE
+WRITE, WRITEN
+RUNX, RUNS, RUN
+PROC, CALL, RETURN
+GETTEXT, STRCOPY, STRFIND
+STRTOTIME, TIMETOSTR
+TEXTALIGN, FONT, TEXT, LINE, RECT, CIRCLE
+END
+</code></pre></div>
+<hr />
+<h2 id="zdroje-v-workspace">Zdroje v Workspace<a class="headerlink" href="#zdroje-v-workspace" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>ORDERS_E2S_WEBEDI.pcs</code> - Zpracování objednávek do databáze</li>
+<li><code>ALL_REMOVE_CRLF.pcs</code> - Jednoduché spuštění externího programu</li>
+<li><code>INTERCHANGE.pcs</code> - Kopírování souborů</li>
+<li><code>INVOIC_FAST_HELP.pcs</code> - Příklady EDISET, EDIFATHER, EDIWRITE, EDIMESSAGE</li>
+<li><code>DELFOR_X2IDOC_MO_LEGO.pcs</code> - Pokročilé XMLTAG s iteracemi</li>
+<li><code>ORDRSP_X2E_D01B.PCS</code> - Komplexní XML zpracování s EDISET</li>
+<li><code>RETANNt.pcs</code> - Grafika a tisk (TEXTALIGN, FONT, TEXT, LINE)</li>
+<li><code>invoic_I2E_D01B_marimex.pcs</code> - Více ACTION bloků, INIREAD</li>
+<li><code>EdiScrpt.chm</code> - Originální Windows Help soubor (nedostupný v textové formě)</li>
+</ul>
+<h2 id="poznamka">Poznámka<a class="headerlink" href="#poznamka" title="Permanent link">&para;</a></h2>
+<p>Tato dokumentace byla vypracována analýzou skriptů ve workspace. Poskytuje praktický přehled syntaxe PCS jazyka s reálnými příklady z používaných skriptů.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Zpět na začátek
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Zkop\u00edrov\u00e1no do schr\u00e1nky", "clipboard.copy": "Kop\u00edrovat do schr\u00e1nky", "search.result.more.one": "1 dal\u0161\u00ed na t\u00e9to str\u00e1nce", "search.result.more.other": "# v\u00edce na t\u00e9to str\u00e1nce", "search.result.none": "Nenalezeny \u017e\u00e1dn\u00e9 dokumenty", "search.result.one": "Nalezen\u00fd dokument: 1", "search.result.other": "Nalezen\u00e9 dokumenty: #", "search.result.placeholder": "Pi\u0161te co se m\u00e1 vyhledat", "search.result.term.missing": "Chyb\u011bj\u00edc\u00ed", "select.version": "Vyberte verzi"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
