@@ -1,0 +1,122 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "PCS (EDI Script Language)",
+  "scopeName": "source.pcs",
+  "fileTypes": ["pcs", "pcf"],
+  "foldingStartMarker": "(?i:(ACTION|PROC|LABEL))",
+  "foldingEndMarker": "(?i:(END|ENDIF))",
+  "patterns": [
+    {
+      "comment": "Single line comments - anywhere on line",
+      "name": "comment.line.pcs",
+      "match": ";.*$"
+    },
+    {
+      "comment": "ACTION keyword",
+      "name": "keyword.control.pcs",
+      "match": "\\b(ACTION)\\b"
+    },
+    {
+      "comment": "PROC keyword",
+      "name": "keyword.control.pcs",
+      "match": "\\b(PROC)\\b"
+    },
+    {
+      "comment": "Control flow keywords",
+      "name": "keyword.control.conditional.pcs",
+      "match": "\\b(IF|THEN|ELSE|ENDIF|GOTO|LABEL|RETURN|EXIT|IFFULL|IFEMPTY|IF F|IF !F)\\b"
+    },
+    {
+      "comment": "File operation keywords",
+      "name": "support.function.file-operations.pcs",
+      "match": "\\b(PROGPATH|FILENAME|FILECOPY|FILEDELETE|FILEEXIST|FILEOPEN|FILECLOSE|FILEREAD|FILEWRITE|FILEPATH|FILEPWD|FILELEN|FILEPOS|FILERENAME)\\b"
+    },
+    {
+      "comment": "EDI operation keywords",
+      "name": "support.function.edi-operations.pcs",
+      "match": "\\b(EDIREAD|EDIGET|EDISET|EDIWRITE|EDIMESSAGE|EDIFATHER|EDIDELETE|EDIAPPEND|EDICREATE)\\b"
+    },
+    {
+      "comment": "XML operation keywords",
+      "name": "support.function.xml-operations.pcs",
+      "match": "\\b(XMLREAD|XMLTAG|XMLSAVE|XMLGET|XMLSET|XMLATTR|XMLDELETE)\\b"
+    },
+    {
+      "comment": "String operation keywords",
+      "name": "support.function.string-operations.pcs",
+      "match": "\\b(GETTEXT|SETTEXT|STRCOPY|STRFIND|STRTOTIME|TIMETOSTR|STRLEN|STRCAT|STRTRIM|STRUPPER|STRLOWER)\\b"
+    },
+    {
+      "comment": "Database operation keywords",
+      "name": "support.function.database.pcs",
+      "match": "\\b(DBOPEN|DBCLOSE|DBREAD|DBWRITE|DBFIRST|DBNEXT|DBFIELD|DBEOF)\\b"
+    },
+    {
+      "comment": "Execution keywords",
+      "name": "support.function.execution.pcs",
+      "match": "\\b(RUN|RUNS|RUNX|EXECUTE)\\b"
+    },
+    {
+      "comment": "INI operation keywords",
+      "name": "support.function.ini-operations.pcs",
+      "match": "\\b(INIREAD|INIWRITE|INIDELETE)\\b"
+    },
+    {
+      "comment": "Graphics keywords",
+      "name": "support.function.graphics.pcs",
+      "match": "\\b(TEXT|LINE|RECT|CIRCLE|FONT|TEXTALIGN|COLOR)\\b"
+    },
+    {
+      "comment": "LET assignment keyword",
+      "name": "keyword.other.assignment.pcs",
+      "match": "\\bLET\\b"
+    },
+    {
+      "comment": "CALL keyword",
+      "name": "keyword.other.pcs",
+      "match": "\\bCALL\\b"
+    },
+    {
+      "comment": "String literals",
+      "name": "string.quoted.double.pcs",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.pcs",
+          "match": "\\\\."
+        }
+      ]
+    },
+    {
+      "comment": "String variables ($0, $1, etc)",
+      "name": "variable.language.string.pcs",
+      "match": "\\$\\d+"
+    },
+    {
+      "comment": "Numeric variables (#0, #1, etc)",
+      "name": "variable.language.numeric.pcs",
+      "match": "#\\d+"
+    },
+    {
+      "comment": "Object variables (@0, @1, etc)",
+      "name": "variable.language.object.pcs",
+      "match": "@\\d+"
+    },
+    {
+      "comment": "Bit variables (~0, ~1, etc)",
+      "name": "variable.language.bits.pcs",
+      "match": "~\\d+"
+    },
+    {
+      "comment": "Numeric constants",
+      "name": "constant.numeric.pcs",
+      "match": "\\b\\d+(\\.\\d+)?\\b"
+    },
+    {
+      "comment": "Operators",
+      "name": "keyword.operator.pcs",
+      "match": "(\\+|=|!=|<|>|<=|>=|!|-|\\*|\\/)"
+    }
+  ]
+}

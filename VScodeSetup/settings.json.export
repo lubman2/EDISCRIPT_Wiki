@@ -1,0 +1,62 @@
+{
+  "workbench.colorCustomizations": {
+    "editor.tokenColorCustomizations": {
+      "comments": "#6A9955",
+      "strings": "#CE9178",
+      "numbers": "#B5CEA8",
+      "keywords": "#569CD6",
+      "types": "#4EC9B0"
+    }
+  },
+  "[pcs]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.wordBasedSuggestions": "off",
+    "editor.formatOnSave": false
+  },
+  "files.associations": {
+    "*.pcs": "pcs",
+    "*.pcf": "pcs"
+  },
+  "editor.tokenColorCustomizations": {
+    "[Default Dark Modern]": {
+      "comments": "#6A9955",
+      "strings": "#CE9178",
+      "numbers": "#B5CEA8",
+      "keywords": "#569CD6",
+      "variable.language.string.pcs": "#9CDCFE",
+      "variable.language.numeric.pcs": "#B5CEA8",
+      "variable.language.object.pcs": "#4EC9B0",
+      "variable.language.bits.pcs": "#D4A574",
+      "keyword.control.pcs": "#569CD6",
+      "keyword.control.conditional.pcs": "#D19A66",
+      "support.function.file-operations.pcs": "#DCDCAA",
+      "support.function.edi-operations.pcs": "#C8E6C9",
+      "support.function.xml-operations.pcs": "#FFD700",
+      "support.function.string-operations.pcs": "#F08080",
+      "support.function.execution.pcs": "#DA70D6",
+      "support.function.ini-operations.pcs": "#87CEEB",
+      "support.function.graphics.pcs": "#FF69B4"
+    },
+    "[Default Light Modern]": {
+      "comments": "#008000",
+      "strings": "#A31515",
+      "numbers": "#09885A",
+      "keywords": "#0000FF",
+      "variable.language.string.pcs": "#001080",
+      "variable.language.numeric.pcs": "#098658",
+      "variable.language.object.pcs": "#17929F",
+      "variable.language.bits.pcs": "#9C4C00",
+      "keyword.control.pcs": "#0000FF",
+      "keyword.control.conditional.pcs": "#D97706",
+      "support.function.file-operations.pcs": "#648B00",
+      "support.function.edi-operations.pcs": "#00A651",
+      "support.function.xml-operations.pcs": "#CD8500",
+      "support.function.string-operations.pcs": "#D41C1C",
+      "support.function.execution.pcs": "#9900CC",
+      "support.function.ini-operations.pcs": "#0066CC",
+      "support.function.graphics.pcs": "#DD0033"
+    }
+  }
+}
