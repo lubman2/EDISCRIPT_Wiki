@@ -28,11 +28,11 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - PCS skriptování:
+    - Syntax guide: PCS/PCS_SYNTAX_GUIDE.md
+    - Operace - referenční průvodce: PCS/PCS_OPERACE_REFERENCNI_PRUVODCE.md
   - COMDIS:
     - Kompletní průvodce: COMDIS/COMDIS_KOMPLETNI_PRUVODCE.md
     - Vizuální přehled: COMDIS/COMDIS_VIZUALNI_PREHLED.md
     - Modelování dokumentů: COMDIS/COMDIS_E2X_MODELCH_DOKUMENTACE.md
     - XML schéma: COMDIS/COMDIS_XML_SCHEMAT.md
-  - PCS:
-    - Syntax guide: PCS/PCS_SYNTAX_GUIDE.md
-    - Operace - referenční průvodce: PCS/PCS_OPERACE_REFERENCNI_PRUVODCE.md
